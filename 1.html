@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品详情</title>
+</head>
+<body>
+    <h1 id="product-title">商品详情</h1>
+    <p id="product-description"></p>
+
+    <script>
+        // 获取URL中的商品ID
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');
+
+        // 根据商品ID获取商品详情（这里假设有一个函数getProductDetail）
+        const productDetail = getProductDetail(productId);
+
+        // 显示商品详情
+        document.getElementById('product-title').textContent = productDetail.title;
+        document.getElementById('product-description').textContent = productDetail.description;
+
+        function getProductDetail(productId) {
+            // 这里可以是从服务器获取商品详情的逻辑
+            // 假设我们有一个商品详情的映射
+            const products = {
+                '1': { title: '商品 1', description: '这是商品 1 的详细描述。' },
+                '2': { title: '商品 2', description: '这是商品 2 的详细描述。' },
+                '3': { title: '商品 3', description: '这是商品 3 的详细描述。' }
+            };
+            return products[productId] || { title: '未知商品', description: '商品不存在。' };
+        }
+    </script>
+</body>
+</html>
